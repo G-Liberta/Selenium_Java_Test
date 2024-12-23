@@ -1,4 +1,4 @@
-package com.deloitte.selenium.pages;
+package com.lhind.selenium.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
