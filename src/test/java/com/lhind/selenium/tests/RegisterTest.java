@@ -3,43 +3,52 @@ package com.lhind.selenium.tests;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import com.lhind.selenium.pages.RegisterPage;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import static org.testng.Assert.assertTrue;
-
 import java.time.Duration;
 
 public class RegisterTest {
+
     private WebDriver driver;
     private RegisterPage registerPage;
+    private WebDriverWait wait;
+
+    private static final String BASE_URL = "https://demo.nopcommerce.com/";
+    private static final String EMAIL = "liberta@gmail.com";
+    private static final String PASSWORD = "User123";
+    private static final String FIRST_NAME = "Liberta";
+    private static final String LAST_NAME = "Gani";
+    private static final String COMPANY_NAME = "Testcmp";
 
     @BeforeMethod
     public void setUp() {
-        // Set the system property for ChromeDriver
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\CRS\\Downloads\\chromedriver-win64\\chromedriver.exe"); // Path to ChromeDriver
+        // Use WebDriverManager to manage the ChromeDriver automatically
+        WebDriverManager.chromedriver().setup();
 
-        // Initialize ChromeOptions to specify Chrome for testing binary
+        // Initialize ChromeOptions and set the browser options
         ChromeOptions options = new ChromeOptions();
+        options.addArguments("--incognito");  // Optional: Open in incognito mode
 
-        // Set the path to the Chrome for testing binary (downloaded version)
-        options.setBinary("C:\\Users\\CRS\\Downloads\\chrome-win64\\chrome.exe"); // Path to Chrome for testing binary
-
-        // Initialize ChromeDriver with the specified options
+        // Initialize WebDriver (ChromeDriver in this case)
         driver = new ChromeDriver(options);
 
         // Maximize the browser window
         driver.manage().window().maximize();
 
+        // Initialize WebDriverWait with a default timeout
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
         // Initialize the RegisterPage object
         registerPage = new RegisterPage(driver);
 
         // Open the nopCommerce website
-        registerPage.openPage();
+        registerPage.openPage(BASE_URL);
     }
 
     @Test
@@ -49,7 +58,6 @@ public class RegisterTest {
         System.out.println("Clicked the Register button.");
 
         // Wait for the Register page to load and verify the page title
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.titleContains("Register"));
         String pageTitle = registerPage.getPageTitle();
         assertTrue(pageTitle.contains("Register"), "Expected page title to contain 'Register', but found: " + pageTitle);
@@ -59,30 +67,30 @@ public class RegisterTest {
         registerPage.selectGenderFemale();
         System.out.println("Selected female gender.");
 
-        registerPage.enterFirstName("Liberta");
-        System.out.println("Entered first name: Liberta.");
+        registerPage.enterFirstName(FIRST_NAME);
+        System.out.println("Entered first name: " + FIRST_NAME);
 
-        registerPage.enterLastName("Gani");
-        System.out.println("Entered last name: Gani.");
+        registerPage.enterLastName(LAST_NAME);
+        System.out.println("Entered last name: " + LAST_NAME);
 
         registerPage.selectDateOfBirth();
         System.out.println("Selected date of birth: 3rd October 1983.");
 
-        registerPage.enterEmail("liberta@gmail.com");
-        System.out.println("Entered email: liberta@gmail.com.");
+        registerPage.enterEmail(EMAIL);
+        System.out.println("Entered email: " + EMAIL);
 
-        registerPage.enterCompanyName("Testcmp");
-        System.out.println("Entered company name: Testcmp.");
+        registerPage.enterCompanyName(COMPANY_NAME);
+        System.out.println("Entered company name: " + COMPANY_NAME);
 
         // Scroll down a bit to make sure the fields are visible
         registerPage.scrollDown();
         System.out.println("Scrolled down.");
 
-        registerPage.enterPassword("User123");
-        System.out.println("Entered password: User123.");
+        registerPage.enterPassword(PASSWORD);
+        System.out.println("Entered password: " + PASSWORD);
 
-        registerPage.enterConfirmPassword("User123");
-        System.out.println("Entered confirm password: User123.");
+        registerPage.enterConfirmPassword(PASSWORD);
+        System.out.println("Entered confirm password: " + PASSWORD);
 
         // Click the register button to submit the form
         registerPage.clickRegisterSubmitButton();
@@ -90,13 +98,13 @@ public class RegisterTest {
 
         // Verify registration success message
         String successMessage = registerPage.getSuccessMessage();
-        assertTrue(successMessage.contains("Your registration completed"), "Expected success message to contain 'Your registration completed', but found: " + successMessage);
+        assertTrue(successMessage.contains("Your registration completed"), 
+            "Expected success message to contain 'Your registration completed', but found: " + successMessage);
         System.out.println("Verified success message: " + successMessage);
 
         // Logout after successful registration
         registerPage.clickLogoutButton();
         System.out.println("Logged out successfully.");
-
     }
 
     @AfterMethod
@@ -104,7 +112,7 @@ public class RegisterTest {
         // Wait a bit before closing to observe the result
         try {
             System.out.println("Waiting 5 seconds before closing...");
-            Thread.sleep(5000);  // 5-second delay before closing
+            Thread.sleep(5000);  // 5-second delay before closing (Remove this if not needed)
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

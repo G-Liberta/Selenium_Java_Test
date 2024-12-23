@@ -1,0 +1,8 @@
+<suite name="Test Suite">
+    <test name="Login Test">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="com.lhind.selenium.tests.LoginTest"/>
+        </classes>
+    </test>
+</suite>
