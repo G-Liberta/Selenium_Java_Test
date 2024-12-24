@@ -1,87 +1,73 @@
 package com.lhind.selenium.pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import java.time.Duration;
 
+import java.time.Duration;
 
 public class LoginPage {
     private WebDriver driver;
+    private WebDriverWait wait;
 
     // Locators
-    private By loginLink = By.xpath("//a[@class='ico-login' and text()='Log in']");
-    private By emailField = By.xpath("//input[@id='Email']");
-    private By passwordField = By.xpath("//input[@id='Password']");
-    private By loginButton = By.xpath("//button[@class='button-1 login-button' and text()='Log in']");
-    private By welcomeMessage = By.xpath("//div[@class='topic-block-title']/h2");
-    private By logoutButton = By.xpath("//a[@class='ico-logout' and text()='Log out']");
+    private final By loginLink = By.xpath("//a[@class='ico-login' and text()='Log in']");
+    private final By emailField = By.id("Email");
+    private final By passwordField = By.id("Password");
+    private final By loginButton = By.xpath("//button[@class='button-1 login-button' and text()='Log in']");
+    private final By welcomeMessage = By.xpath("//div[@class='topic-block-title']/h2");
+    private final By logoutButton = By.xpath("//a[@class='ico-logout' and text()='Log out']");
 
     // Constructor
     public LoginPage(WebDriver driver) {
         this.driver = driver;
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
-    // Private method for explicit wait to check if element is visible
-    private void waitUntilElementIsVisible(By locator, Duration timeout) {
-        new WebDriverWait(driver, timeout)
-                .until(ExpectedConditions.visibilityOfElementLocated(locator));
+    // Helper methods
+    private WebElement waitForElement(By locator) {
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
-    // Private method for explicit wait to check if element is clickable
-    private void waitUntilElementIsClickable(By locator, Duration timeout) {
-        new WebDriverWait(driver, timeout)
-                .until(ExpectedConditions.elementToBeClickable(locator));
+    private void clickElement(By locator) {
+        wait.until(ExpectedConditions.elementToBeClickable(locator)).click();
     }
 
-    // Method to open the page
-    public void openPage(String url) {
-        driver.get(url);
-    }
-
-    // Method to click the Login link
+    // Actions
     public void clickLoginLink() {
-        waitUntilElementIsClickable(loginLink, Duration.ofSeconds(10));
-        driver.findElement(loginLink).click();
+        clickElement(loginLink);
     }
 
-    // Method to enter email
     public void enterEmail(String email) {
-        waitUntilElementIsVisible(emailField, Duration.ofSeconds(10));
-        driver.findElement(emailField).sendKeys(email);
+        waitForElement(emailField).sendKeys(email);
     }
 
-    // Method to enter password
     public void enterPassword(String password) {
-        waitUntilElementIsVisible(passwordField, Duration.ofSeconds(10));
-        driver.findElement(passwordField).sendKeys(password);
+        waitForElement(passwordField).sendKeys(password);
     }
 
-    // Method to click the Login button
     public void clickLoginButton() {
-        waitUntilElementIsClickable(loginButton, Duration.ofSeconds(10));
-        driver.findElement(loginButton).click();
+        clickElement(loginButton);
     }
 
-    // Method to check if welcome message is displayed
     public boolean isWelcomeMessageDisplayed() {
-        waitUntilElementIsVisible(welcomeMessage, Duration.ofSeconds(10));
-        return driver.findElement(welcomeMessage).isDisplayed();
+        return waitForElement(welcomeMessage).isDisplayed();
     }
 
-    // Method to check if Logout button is displayed
     public boolean isLogoutButtonDisplayed() {
-        waitUntilElementIsVisible(logoutButton, Duration.ofSeconds(10));
-        return driver.findElement(logoutButton).isDisplayed();
+        return waitForElement(logoutButton).isDisplayed();
     }
 
-    // Method to click the Logout button
     public void clickLogoutButton() {
-        waitUntilElementIsClickable(logoutButton, Duration.ofSeconds(10));
-        driver.findElement(logoutButton).click();
+        clickElement(logoutButton);
     }
 
+    // Login method
+    public void login(String email, String password) {
+        enterEmail(email);
+        enterPassword(password);
+        clickLoginButton();
+    }
 }

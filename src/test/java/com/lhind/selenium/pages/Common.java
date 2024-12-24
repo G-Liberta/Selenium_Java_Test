@@ -13,39 +13,22 @@ import java.io.File;
 import java.io.IOException;
 import java.time.Duration;
 
-
 public class Common {
     protected WebDriver driver;
     protected WebDriverWait wait;
-    protected LoginPage loginPage;
-
     private static final String BASE_URL = "https://demo.nopcommerce.com/";
-    private static final String EMAIL = "liberta@gmail.com";
-    private static final String PASSWORD = "User123";
+    private static final Duration TIMEOUT = Duration.ofSeconds(10);
 
     // Setup method
     public void setUp() {
-        // Use WebDriverManager to manage the ChromeDriver automatically
         WebDriverManager.chromedriver().setup();
 
-        // Initialize ChromeOptions
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--incognito");
-        options.addArguments("--window-size=1920,1080");
+        options.addArguments("--incognito", "--window-size=1920,1080");
 
-        // Initialize WebDriver
         driver = new ChromeDriver(options);
-
-        // Maximize the browser window
         driver.manage().window().maximize();
-
-        // Initialize WebDriverWait
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-
-        // Initialize LoginPage
-        loginPage = new LoginPage(driver);
-
-        // Open the application
+        wait = new WebDriverWait(driver, TIMEOUT);
         driver.get(BASE_URL);
     }
 
@@ -56,24 +39,13 @@ public class Common {
         }
     }
 
-    // Login method
-    public void login() {
-        // Navigate to Login Page and perform login actions
-        loginPage.clickLoginLink();
-        loginPage.enterEmail(EMAIL);
-        loginPage.enterPassword(PASSWORD);
-        loginPage.clickLoginButton();
-    }
-
     // Capture screenshot
     protected void captureScreenshot(String fileName) {
         File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
         try {
             FileUtils.copyFile(screenshot, new File("screenshots/" + fileName + ".png"));
-            System.out.println("Screenshot saved: screenshots/" + fileName + ".png");
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 }
-

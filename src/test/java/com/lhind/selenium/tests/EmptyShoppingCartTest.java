@@ -1,6 +1,6 @@
 package com.lhind.selenium.tests;
 
-import com.lhind.selenium.base.BaseTest;
+import com.lhind.selenium.pages.Common;
 import com.lhind.selenium.pages.EmptyShoppingCartPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
