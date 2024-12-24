@@ -1,6 +1,5 @@
 package com.lhind.selenium.tests;
 import com.lhind.selenium.pages.DashboardPage;
-import com.lhind.selenium.pages.RegisterPage;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import java.time.Duration;
 import org.openqa.selenium.WebDriver;
