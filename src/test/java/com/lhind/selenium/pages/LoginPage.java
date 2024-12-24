@@ -1,10 +1,13 @@
 package com.lhind.selenium.pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
+
 
 public class LoginPage {
     private WebDriver driver;
@@ -79,5 +82,23 @@ public class LoginPage {
     public void clickLogoutButton() {
         waitUntilElementIsClickable(logoutButton, Duration.ofSeconds(10));
         driver.findElement(logoutButton).click();
+    }
+
+    //public void injectMockCaptchaToken() {
+        // Use JavaScript to inject the mock CAPTCHA token into the g-recaptcha-response field
+        //String script = "document.querySelector('textarea[name=\"g-recaptcha-response\"]').value = 'mock-captcha-token';";
+        
+        // Execute the JavaScript to set the mock token value
+        //((JavascriptExecutor) driver).executeScript(script);
+    //}
+
+
+    public void injectMockCaptchaToken() {
+        // Wait for the CAPTCHA response field to be available
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        WebElement captchaField = wait.until(ExpectedConditions.presenceOfElementLocated(By.name("g-recaptcha-response")));
+        
+        // Inject the mock CAPTCHA token using JavaScript
+        ((JavascriptExecutor) driver).executeScript("arguments[0].value = 'mock-captcha-token';", captchaField);
     }
 }
