@@ -1,19 +1,21 @@
 # Selenium & Java Automation Project
 
 This project demonstrates automated UI testing using Java, Selenium WebDriver, TestNG, and the Page Object Model (POM) design pattern. 
-The tests are implemented for the [nopCommerce Demo Store](https://demo.nopcommerce.com/) to verify different functionalities such as Register, Login, Add item to shopping cart, and other test scenarios.
+The automation suite covers a variety of test scenarios for the [nopCommerce Demo Store](https://demo.nopcommerce.com/), including user registration, login, adding items to the shopping cart, and more.
 
 
 ## Features
 
-- **Selenium WebDriver**: For browser automation.
-- **TestNG**: For test management, assertions, and reporting.
-- **Page Object Model (POM)**: To organize locators and actions for better reusability.
-- **Maven**: For dependency management and build configuration.
-- **Screenshots**: Automatically captured on test failures.
-- **Reports**: Test results are logged using TestNG.
+- **Selenium WebDriver**: Enables browser automation to simulate real user interactions.
+- **TestNG**: Manages test execution, assertions, and generates detailed reports.
+- **Page Object Model (POM)**: Provides maintainability and reusability
+- **Maven**: Simplifies dependency management and project builds.
+- **Screenshots**: Automatically captures screenshots for failed test cases.
+- **Reports**: Generates detailed logs and reports for all test executions.
 
 ## Prerequisites
+
+Ensure the following tools and configurations are set up before running the project:
 
 - **Java**: JDK 8 or later. Configure the JAVA_HOME environment variable.
 - **Selenium**: Included in your Maven pom.xml file
@@ -24,7 +26,13 @@ The tests are implemented for the [nopCommerce Demo Store](https://demo.nopcomme
 
 ## Installation
 
-1. Clone the repository:
-   git clone <repository-url>
-   cd <repository-directory>
-2. Install dependencies: mvn clean install
+1. Clone the repository: git clone <repository-url>
+2. Install the necessary dependencies and tools (Java, Selenium, TestNG, mvn clean install etc.)
+3. Set up chromedriver (or any other environment where you will run the project)
+4. Run the automated test cases to verify the functionality of the website.
+
+
+## Contact
+If you have any questions or suggestions regarding this project, feel free to reach out or raise an issue in the repository. 
+
+Thank you! :)
