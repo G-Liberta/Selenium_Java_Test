@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 
 import java.math.BigDecimal;
 
-public class ShoppingCartTest extends BaseTest {
+public class ShoppingCartTest extends Common {
 
     @Test
     public void testShoppingCart() {

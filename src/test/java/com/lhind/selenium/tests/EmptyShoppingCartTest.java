@@ -5,7 +5,7 @@ import com.lhind.selenium.pages.EmptyShoppingCartPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class EmptyShoppingCartTest extends BaseTest {
+public class EmptyShoppingCartTest extends Common {
 
     @Test
     public void testEmptyShoppingCart() {
