@@ -14,8 +14,8 @@ public class LoginPage {
 
     // Locators
     private final By loginLink = By.xpath("//a[@class='ico-login' and text()='Log in']");
-    private final By emailField = By.id("Email");
-    private final By passwordField = By.id("Password");
+    private final By emailField = By.xpath("//input[@id='Email']");
+    private final By passwordField = By.xpath("//input[@id='Password']");
     private final By loginButton = By.xpath("//button[@class='button-1 login-button' and text()='Log in']");
     private final By welcomeMessage = By.xpath("//div[@class='topic-block-title']/h2");
     private final By logoutButton = By.xpath("//a[@class='ico-logout' and text()='Log out']");
@@ -35,31 +35,31 @@ public class LoginPage {
         wait.until(ExpectedConditions.elementToBeClickable(locator)).click();
     }
 
-    // Actions
+    // Method to click login link
     public void clickLoginLink() {
         clickElement(loginLink);
     }
-
+    // Method to input email
     public void enterEmail(String email) {
         waitForElement(emailField).sendKeys(email);
     }
-
+    // Method to input password
     public void enterPassword(String password) {
         waitForElement(passwordField).sendKeys(password);
     }
-
+    // Method to click login button
     public void clickLoginButton() {
         clickElement(loginButton);
     }
-
+    // Method to verify if the Welcome message is displayed
     public boolean isWelcomeMessageDisplayed() {
         return waitForElement(welcomeMessage).isDisplayed();
     }
-
+    // Method to check if Logout option is displayed
     public boolean isLogoutButtonDisplayed() {
         return waitForElement(logoutButton).isDisplayed();
     }
-
+    // Method to click Logut button
     public void clickLogoutButton() {
         clickElement(logoutButton);
     }

@@ -18,7 +18,6 @@ public class RegisterTest {
     private WebDriver driver;
     private RegisterPage registerPage;
     private WebDriverWait wait;
-
     private static final String BASE_URL = "https://demo.nopcommerce.com/";
     private static final String EMAIL = "liberta@gmail.com";
     private static final String PASSWORD = "User123";

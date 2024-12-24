@@ -11,21 +11,21 @@ public class RegisterPage {
     private WebDriver driver;
 
     // Locators
-    private By registerButton = By.xpath("//a[@class='ico-register' and contains(@href, '/register')]");
-    private By pageTitle = By.xpath("//div[@class='page-title']");
-    private By genderFemale = By.xpath("//input[@id='gender-female']");
-    private By firstName = By.xpath("//input[@id='FirstName']");
-    private By lastName = By.xpath("//input[@id='LastName']");
-    private By dobDay = By.xpath("//select[@name='DateOfBirthDay']/option[@value='3']");
-    private By dobMonth = By.xpath("//select[@name='DateOfBirthMonth']/option[@value='10']");
-    private By dobYear = By.xpath("//select[@name='DateOfBirthYear']/option[@value='1983']");
-    private By email = By.xpath("//input[@id='Email']");
-    private By company = By.xpath("//input[@id='Company']");
-    private By password = By.xpath("//input[@id='Password']");
-    private By confirmPassword = By.xpath("//input[@id='ConfirmPassword']");
-    private By registerSubmitButton = By.xpath("//button[@id='register-button']");
-    private By logoutButton = By.xpath("//a[@href='/logout']");
-    private By successMessage = By.xpath("//div[@class='result' and text()='Your registration completed']");
+    private final By registerButton = By.xpath("//a[@class='ico-register' and contains(@href, '/register')]");
+    private final By pageTitle = By.xpath("//div[@class='page-title']");
+    private final By genderFemale = By.xpath("//input[@id='gender-female']");
+    private final By firstName = By.xpath("//input[@id='FirstName']");
+    private final By lastName = By.xpath("//input[@id='LastName']");
+    private final By dobDay = By.xpath("//select[@name='DateOfBirthDay']/option[@value='3']");
+    private final By dobMonth = By.xpath("//select[@name='DateOfBirthMonth']/option[@value='10']");
+    private final By dobYear = By.xpath("//select[@name='DateOfBirthYear']/option[@value='1983']");
+    private final By email = By.xpath("//input[@id='Email']");
+    private final By company = By.xpath("//input[@id='Company']");
+    private final By password = By.xpath("//input[@id='Password']");
+    private final By confirmPassword = By.xpath("//input[@id='ConfirmPassword']");
+    private final By registerSubmitButton = By.xpath("//button[@id='register-button']");
+    private final By logoutButton = By.xpath("//a[@href='/logout']");
+    private final By successMessage = By.xpath("//div[@class='result' and text()='Your registration completed']");
 
     // Constructor
     public RegisterPage(WebDriver driver) {

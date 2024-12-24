@@ -15,20 +15,19 @@ public class DashboardPage {
     private WebDriverWait wait;
 
     // Locators
-    private By computersMenu = By.xpath("//ul[@class='top-menu notmobile']//a[@href='/computers' and text()='Computers ']");
-    private By notebooksLink = By.xpath("//ul[@class='sublist first-level']//a[@href='/notebooks']");
-    private By pageTitle = By.xpath("//div[@class='page-title']");
-    private By displayDropdown = By.id("products-pagesize");
-    private By option9 = By.xpath("//select[@id='products-pagesize']//option[@value='9']");
-    private By filter16GB = By.id("attribute-option-10");
-    private By productContainer = By.xpath("//div[@class='products-container']");
-    private By addToWishlistBtn = By.xpath("(//button[text()='Add to wishlist'])[2]");
-    private By productAddedToWishlistMsg = By.xpath("//p[@class='content' and contains(text(), 'The product has been added to your')]");
-    private By addToCartBtn4 = By.xpath("(//button[text()='Add to cart'])[4]");
-    private By addToCartBtn5 = By.xpath("(//button[text()='Add to cart'])[5]");
-    private By addToCartBtn6 = By.xpath("(//button[text()='Add to cart'])[6]");
-    private By wishlistQty = By.xpath("//span[@class='wishlist-qty' and contains(text(), '2')]");
-    private By cartQty = By.xpath("//span[@class='cart-qty' and contains(text(), '3')]");
+    private final By computersMenu = By.xpath("//ul[@class='top-menu notmobile']//a[@href='/computers' and text()='Computers ']");
+    private final By notebooksLink = By.xpath("//ul[@class='sublist first-level']//a[@href='/notebooks']");
+    private final By pageTitle = By.xpath("//div[@class='page-title']");
+    private final By displayDropdown = By.xpath("//select[@id='products-pagesize']");
+    private final By option9 = By.xpath("//select[@id='products-pagesize']//option[@value='9']");
+    private final By filter16GB = By.xpath("//input[@id=\"attribute-option-10\"]");
+    private final By addToWishlistBtn = By.xpath("(//button[text()='Add to wishlist'])[2]");
+    private final By productAddedToWishlistMsg = By.xpath("//p[@class='content' and contains(text(), 'The product has been added to your')]");
+    private final By addToCartBtn4 = By.xpath("(//button[text()='Add to cart'])[4]");
+    private final By addToCartBtn5 = By.xpath("(//button[text()='Add to cart'])[5]");
+    private final By addToCartBtn6 = By.xpath("(//button[text()='Add to cart'])[6]");
+    private final By wishlistQty = By.xpath("//span[@class='wishlist-qty' and contains(text(), '2')]");
+    private final By cartQty = By.xpath("//span[@class='cart-qty' and contains(text(), '3')]");
 
     public DashboardPage(WebDriver driver) {
         this.driver = driver;
@@ -64,7 +63,7 @@ public class DashboardPage {
         return driver.findElements(By.xpath("//div[@class='product-grid']//div[@class='product-item']")).size() == 6;
     }
 
-    // Check 16GB filter
+    // Check 16GB option filter
     public void select16GBFilter() {
         driver.findElement(filter16GB).click();
     }

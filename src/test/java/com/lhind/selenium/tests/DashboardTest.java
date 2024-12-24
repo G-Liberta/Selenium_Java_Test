@@ -8,7 +8,6 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -46,8 +45,7 @@ public class DashboardTest {
 
     @Test
     public void testDashboard() {
-        // Step 1: Log in (assuming login is handled in a separate method or test)
-        // loginToApplication(); // Implement login if required
+        // Step 1: Log is handled in a separate test
 
         // Step 2: Hover over Computers Menu and click Notebooks
         dashboardPage.hoverAndClickNotebooks();

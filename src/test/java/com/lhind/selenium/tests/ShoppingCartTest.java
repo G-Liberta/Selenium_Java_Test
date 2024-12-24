@@ -4,8 +4,8 @@ import com.lhind.selenium.pages.Common;
 import com.lhind.selenium.pages.LoginPage;
 import com.lhind.selenium.pages.ShoppingCartPage;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
-
 import java.math.BigDecimal;
 
 public class ShoppingCartTest extends Common {
@@ -44,6 +44,10 @@ public class ShoppingCartTest extends Common {
         BigDecimal displayedTotal = shoppingCartPage.getDisplayedTotalPrice();
         Assert.assertEquals(calculatedTotal, displayedTotal, "The calculated total price does not match the displayed total!");
 
-        // Step 7: Close the browser (handled by BaseTest teardown)
+    }
+    // Step 7: Close the browser (handled by BaseTest teardown)
+    @AfterMethod
+    public void tearDownTest() {
+        tearDown();
     }
 }

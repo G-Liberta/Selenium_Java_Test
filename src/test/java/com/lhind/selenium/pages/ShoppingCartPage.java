@@ -15,16 +15,16 @@ public class ShoppingCartPage {
     private WebDriverWait wait;
 
     // Locators
-    private By shoppingCartMenu = By.xpath("//li[@id='topcartlink']//a[@href='/cart']");
-    private By goToCartButton = By.xpath("//button[@class='button-1 cart-button']");
-    private By shoppingCartTitle = By.xpath("//div[@class='page-title' and contains(text(),'Shopping cart')]");
-    private By updateCartButton = By.xpath("//button[@id='updatecart']");
-    private By continueShoppingButton = By.className("button-2 continue-shopping-button");
-    private By estimateShippingButton = By.xpath("//a[@id='open-estimate-shipping-popup' and @class='estimate-shipping-button']");
-    private By priceForProduct1 = By.xpath("(//span[@class='product-subtotal'])[1]");
-    private By priceForProduct2 = By.xpath("(//span[@class='product-subtotal'])[2]");
-    private By priceForProduct3 = By.xpath("(//span[@class='product-subtotal'])[3]");
-    private By totalPrice = By.xpath("//tr[@class='order-total']//td[@class='cart-total-right']");
+    private final By shoppingCartMenu = By.xpath("//li[@id='topcartlink']//a[@href='/cart']");
+    private final By goToCartButton = By.xpath("//button[@class='button-1 cart-button']");
+    private final By shoppingCartTitle = By.xpath("//div[@class='page-title' and contains(text(),'Shopping cart')]");
+    private final By updateCartButton = By.xpath("//button[@id='updatecart']");
+    private final By continueShoppingButton = By.className("button-2 continue-shopping-button");
+    private final By estimateShippingButton = By.xpath("//a[@id='open-estimate-shipping-popup' and @class='estimate-shipping-button']");
+    private final By priceForProduct1 = By.xpath("(//span[@class='product-subtotal'])[1]");
+    private final By priceForProduct2 = By.xpath("(//span[@class='product-subtotal'])[2]");
+    private final By priceForProduct3 = By.xpath("(//span[@class='product-subtotal'])[3]");
+    private final By totalPrice = By.xpath("//tr[@class='order-total']//td[@class='cart-total-right']");
 
     public ShoppingCartPage(WebDriver driver) {
         this.driver = driver;
