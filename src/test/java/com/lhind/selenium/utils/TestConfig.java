@@ -1,7 +1,6 @@
 package com.lhind.selenium.utils;
 
 import java.time.Duration;
-
 import org.openqa.selenium.By;
 
 public class TestConfig {
@@ -12,9 +11,7 @@ public class TestConfig {
     // Timeout duration for WebDriverWait
     public static final Duration TIMEOUT = Duration.ofSeconds(10);
 
-    
-    public static final String LOGIN_URL = BASE_URL + "login";
-    public static final String DASHBOARD_URL = BASE_URL + "dashboard";
+
 
     // RegisterPage Locators
     public static final By registerButton = By.xpath("//a[@class='ico-register' and contains(@href, '/register')]");
