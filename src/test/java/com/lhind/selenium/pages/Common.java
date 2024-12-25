@@ -1,6 +1,7 @@
 package com.lhind.selenium.pages;
 
 import org.openqa.selenium.WebDriver;
+import com.lhind.selenium.utils.TestConfig;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -11,13 +12,10 @@ import org.openqa.selenium.TakesScreenshot;
 
 import java.io.File;
 import java.io.IOException;
-import java.time.Duration;
 
 public class Common {
     protected WebDriver driver;
     protected WebDriverWait wait;
-    private static final String BASE_URL = "https://demo.nopcommerce.com/";
-    private static final Duration TIMEOUT = Duration.ofSeconds(10);
 
     // Setup method
     public void setUp() {
@@ -28,8 +26,8 @@ public class Common {
 
         driver = new ChromeDriver(options);
         driver.manage().window().maximize();
-        wait = new WebDriverWait(driver, TIMEOUT);
-        driver.get(BASE_URL);
+        wait = new WebDriverWait(driver, TestConfig.TIMEOUT);
+        driver.get(TestConfig.BASE_URL);
     }
 
     // Teardown method

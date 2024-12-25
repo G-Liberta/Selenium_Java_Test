@@ -2,10 +2,25 @@ package com.lhind.selenium.tests;
 
 import com.lhind.selenium.pages.Common;
 import com.lhind.selenium.pages.EmptyShoppingCartPage;
+import com.lhind.selenium.pages.LoginPage;
+
+import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class EmptyShoppingCartTest extends Common {
+    private WebDriver driver;
+    private EmptyShoppingCartPage emptyShoppingCartPage;
+    private LoginPage loginPage;
+    private static final String EMAIL = "liberta@gmail.com";
+    private static final String PASSWORD = "User123";
+
+    @BeforeMethod
+    public void setUpTest() {
+        setUp();
+        emptyShoppingCartPage = new EmptyShoppingCartPage(driver);
+    }
 
     @Test
     public void testEmptyShoppingCart() {

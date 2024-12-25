@@ -4,6 +4,9 @@
         <classes>
             <class name="com.lhind.selenium.tests.LoginTest"/>
             <class name="com.lhind.selenium.tests.RegisterTest" />
+            <class name="com.lhind.selenium.tests.DashboardTest" />
+            <class name="com.lhind.selenium.tests.ShoppingCartTest" />
+            <class name="com.lhind.selenium.tests.EmptyShoppingCartTest" />
         </classes>
     </test>
 </suite>

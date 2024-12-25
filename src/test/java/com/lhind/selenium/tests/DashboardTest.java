@@ -2,12 +2,7 @@ package com.lhind.selenium.tests;
 import com.lhind.selenium.pages.Common;
 import com.lhind.selenium.pages.DashboardPage;
 import com.lhind.selenium.pages.LoginPage;
-import io.github.bonigarcia.wdm.WebDriverManager;
-import java.time.Duration;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -17,7 +12,6 @@ public class DashboardTest extends Common{
 
     private WebDriver driver;
     private DashboardPage dashboardPage;
-    private static final String BASE_URL = "https://demo.nopcommerce.com/";
     private LoginPage loginPage;
     private static final String EMAIL = "liberta@gmail.com";
     private static final String PASSWORD = "User123";
@@ -36,6 +30,9 @@ public class DashboardTest extends Common{
             loginPage.enterEmail(EMAIL);
             loginPage.enterPassword(PASSWORD);
             loginPage.clickLoginButton();
+        } catch (Exception e) {
+            Assert.fail("Login failed: " + e.getMessage());
+        }
 
         // Step 2: Hover over Computers Menu and click Notebooks
         dashboardPage.hoverAndClickNotebooks();

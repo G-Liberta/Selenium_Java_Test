@@ -2,6 +2,7 @@ package com.lhind.selenium.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import com.lhind.selenium.utils.TestConfig;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
@@ -10,22 +11,6 @@ public class RegisterPage {
 
     private WebDriver driver;
 
-    // Locators
-    private final By registerButton = By.xpath("//a[@class='ico-register' and contains(@href, '/register')]");
-    private final By pageTitle = By.xpath("//div[@class='page-title']");
-    private final By genderFemale = By.xpath("//input[@id='gender-female']");
-    private final By firstName = By.xpath("//input[@id='FirstName']");
-    private final By lastName = By.xpath("//input[@id='LastName']");
-    private final By dobDay = By.xpath("//select[@name='DateOfBirthDay']/option[@value='3']");
-    private final By dobMonth = By.xpath("//select[@name='DateOfBirthMonth']/option[@value='10']");
-    private final By dobYear = By.xpath("//select[@name='DateOfBirthYear']/option[@value='1983']");
-    private final By email = By.xpath("//input[@id='Email']");
-    private final By company = By.xpath("//input[@id='Company']");
-    private final By password = By.xpath("//input[@id='Password']");
-    private final By confirmPassword = By.xpath("//input[@id='ConfirmPassword']");
-    private final By registerSubmitButton = By.xpath("//button[@id='register-button']");
-    private final By logoutButton = By.xpath("//a[@href='/logout']");
-    private final By successMessage = By.xpath("//div[@class='result' and text()='Your registration completed']");
 
     // Constructor
     public RegisterPage(WebDriver driver) {
@@ -63,48 +48,48 @@ public class RegisterPage {
 
     // Method to click the Register button
     public void clickRegisterButton() {
-        clickElement(registerButton);
+        clickElement(TestConfig.registerButton);
     }
 
     // Method to get the page title
     public String getPageTitle() {
-        return getElementText(pageTitle);
+        return getElementText(TestConfig.pageTitle);
     }
 
     // Method to select gender Female
     public void selectGenderFemale() {
-        clickElement(genderFemale);
+        clickElement(TestConfig.genderFemale);
     }
 
     // Method to enter first name
     public void enterFirstName(String fname) {
-        waitUntilElementIsVisible(firstName, Duration.ofSeconds(10));
-        driver.findElement(firstName).sendKeys(fname);
+        waitUntilElementIsVisible(TestConfig.firstName, Duration.ofSeconds(10));
+        driver.findElement(TestConfig.firstName).sendKeys(fname);
     }
 
     // Method to enter last name
     public void enterLastName(String lname) {
-        waitUntilElementIsVisible(lastName, Duration.ofSeconds(10));
-        driver.findElement(lastName).sendKeys(lname);
+        waitUntilElementIsVisible(TestConfig.lastName, Duration.ofSeconds(10));
+        driver.findElement(TestConfig.lastName).sendKeys(lname);
     }
 
     // Method to select date of birth
     public void selectDateOfBirth() {
-        clickElement(dobDay);
-        clickElement(dobMonth);
-        clickElement(dobYear);
+        clickElement(TestConfig.dobDay);
+        clickElement(TestConfig.dobMonth);
+        clickElement(TestConfig.dobYear);
     }
 
     // Method to input email
     public void enterEmail(String emailInput) {
-        waitUntilElementIsVisible(email, Duration.ofSeconds(10));
-        driver.findElement(email).sendKeys(emailInput);
+        waitUntilElementIsVisible(TestConfig.email, Duration.ofSeconds(10));
+        driver.findElement(TestConfig.email).sendKeys(emailInput);
     }
 
     // Method to input company name
     public void enterCompanyName(String companyName) {
-        waitUntilElementIsVisible(company, Duration.ofSeconds(10));
-        driver.findElement(company).sendKeys(companyName);
+        waitUntilElementIsVisible(TestConfig.company, Duration.ofSeconds(10));
+        driver.findElement(TestConfig.company).sendKeys(companyName);
     }
 
     // Method to scroll down the page
@@ -114,29 +99,29 @@ public class RegisterPage {
 
     // Method to input password
     public void enterPassword(String passwordInput) {
-        waitUntilElementIsVisible(password, Duration.ofSeconds(10));
-        driver.findElement(password).sendKeys(passwordInput);
+        waitUntilElementIsVisible(TestConfig.password, Duration.ofSeconds(10));
+        driver.findElement(TestConfig.password).sendKeys(passwordInput);
     }
 
     // Method to input confirm password
     public void enterConfirmPassword(String confirmPwdInput) {
-        waitUntilElementIsVisible(confirmPassword, Duration.ofSeconds(10));
-        driver.findElement(confirmPassword).sendKeys(confirmPwdInput);
+        waitUntilElementIsVisible(TestConfig.confirmPassword, Duration.ofSeconds(10));
+        driver.findElement(TestConfig.confirmPassword).sendKeys(confirmPwdInput);
     }
 
     // Method to click the final register button
     public void clickRegisterSubmitButton() {
-        clickElement(registerSubmitButton);
+        clickElement(TestConfig.registerSubmitButton);
     }
 
     // Method to get the success message text
     public String getSuccessMessage() {
-        return getElementText(successMessage);
+        return getElementText(TestConfig.successMessage);
     }
 
     // Method to click the logout button
     public void clickLogoutButton() {
-        clickElement(logoutButton);
+        clickElement(TestConfig.logoutButton);
         System.out.println("Clicked the Logout button.");
     }
 }

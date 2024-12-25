@@ -3,24 +3,39 @@ package com.lhind.selenium.tests;
 import com.lhind.selenium.pages.Common;
 import com.lhind.selenium.pages.LoginPage;
 import com.lhind.selenium.pages.ShoppingCartPage;
+
+import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import java.math.BigDecimal;
 
 public class ShoppingCartTest extends Common {
 
-    private LoginPage loginPage;
+    private WebDriver driver;
     private ShoppingCartPage shoppingCartPage;
+    private LoginPage loginPage;
+    private static final String EMAIL = "liberta@gmail.com";
+    private static final String PASSWORD = "User123";
+
+    @BeforeMethod
+    public void setUpTest() {
+        setUp();
+        shoppingCartPage = new ShoppingCartPage(driver);
+    }
 
     @Test
     public void testShoppingCart() {
-        // Login Precondition
-        LoginPage loginPage = new LoginPage(driver);
-        loginPage.login("test@example.com", "password123");
-
-        // Initialize Shopping Cart Page
-        ShoppingCartPage shoppingCartPage = new ShoppingCartPage(driver);
+        // Log in precondition
+        try {
+            loginPage.clickLoginLink();
+            loginPage.enterEmail(EMAIL);
+            loginPage.enterPassword(PASSWORD);
+            loginPage.clickLoginButton();
+        } catch (Exception e) {
+            Assert.fail("Login failed: " + e.getMessage());
+        }
 
         // Step 1: Hover over Shopping Cart menu
         shoppingCartPage.hoverOverShoppingCartMenu();
