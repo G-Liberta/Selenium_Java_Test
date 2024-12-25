@@ -34,10 +34,6 @@ public class DashboardPage {
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
-    // Method to open the page
-    public void openPage(String url) {
-        driver.get(url);
-    }
 
     // Method to hover over the Computers Menu and click on Notebooks
     public void hoverAndClickNotebooks() {

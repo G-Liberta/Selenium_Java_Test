@@ -9,11 +9,12 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import com.lhind.selenium.pages.RegisterPage;
+import com.lhind.selenium.pages.Common;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import static org.testng.Assert.assertTrue;
 import java.time.Duration;
 
-public class RegisterTest {
+public class RegisterTest extends Common{
 
     private WebDriver driver;
     private RegisterPage registerPage;
@@ -107,18 +108,7 @@ public class RegisterTest {
     }
 
     @AfterMethod
-    public void tearDown() {
-        // Wait a bit before closing to observe the result
-        try {
-            System.out.println("Waiting 5 seconds before closing...");
-            Thread.sleep(5000);  // 5-second delay before closing (Remove this if not needed)
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        // Close the browser after the test is done
-        if (driver != null) {
-            driver.quit();
-        }
+    public void tearDownTest() {
+        tearDown();
     }
 }

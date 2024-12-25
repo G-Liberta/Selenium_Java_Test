@@ -66,6 +66,7 @@ public class LoginPage {
 
     // Login method
     public void login(String email, String password) {
+        clickLoginLink();
         enterEmail(email);
         enterPassword(password);
         clickLoginButton();

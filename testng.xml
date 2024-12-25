@@ -3,6 +3,7 @@
         <parameter name="browser" value="chrome"/>
         <classes>
             <class name="com.lhind.selenium.tests.LoginTest"/>
+            <class name="com.lhind.selenium.tests.RegisterTest" />
         </classes>
     </test>
 </suite>
