@@ -1,6 +1,7 @@
 package com.lhind.selenium.tests;
 
 import com.lhind.selenium.pages.Common;
+import com.lhind.selenium.pages.DashboardPage;
 import com.lhind.selenium.pages.LoginPage;
 import com.lhind.selenium.pages.ShoppingCartPage;
 import org.openqa.selenium.WebDriver;
@@ -15,6 +16,7 @@ public class ShoppingCartTest extends Common {
     private WebDriver driver;
     private ShoppingCartPage shoppingCartPage;
     private LoginPage loginPage;
+    private DashboardPage dashboardPage;
     private static final String EMAIL = "liberta@gmail.com";
     private static final String PASSWORD = "User123";
 
@@ -22,9 +24,10 @@ public class ShoppingCartTest extends Common {
     public void setUpTest() {
         setUp();
         shoppingCartPage = new ShoppingCartPage(driver);
+        dashboardPage = new DashboardPage(driver);
     }
 
-    @Test(dependsOnMethods = "com.lhind.selenium.tests.DashboardTest.testDashboard")
+    @Test
     public void testShoppingCart() {
         // Log in precondition
         try {
@@ -34,6 +37,15 @@ public class ShoppingCartTest extends Common {
             loginPage.clickLoginButton();
         } catch (Exception e) {
             Assert.fail("Login failed: " + e.getMessage());
+        }
+
+        // Precondition: Complete Dashboard steps
+        try {
+            dashboardPage.hoverAndClickNotebooks();
+            dashboardPage.addToCart();
+            }
+        catch (Exception e) {
+            Assert.fail("Dashboard preconditions failed: " + e.getMessage());
         }
 
         // Step 1: Hover over Shopping Cart menu

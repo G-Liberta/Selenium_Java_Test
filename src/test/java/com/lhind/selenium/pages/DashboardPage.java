@@ -92,4 +92,10 @@ public class DashboardPage {
     public boolean verifyCartCount() {
         return driver.findElement(TestConfig.cartQty).isDisplayed();
     }
+
+    // Dashboard method
+    public void dashboard() {
+        hoverAndClickNotebooks();
+        addToCart();
+    }
 }

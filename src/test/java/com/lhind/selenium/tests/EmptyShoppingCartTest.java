@@ -1,8 +1,11 @@
 package com.lhind.selenium.tests;
 
 import com.lhind.selenium.pages.Common;
+import com.lhind.selenium.pages.DashboardPage;
 import com.lhind.selenium.pages.EmptyShoppingCartPage;
 import com.lhind.selenium.pages.LoginPage;
+
+
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
@@ -13,16 +16,18 @@ public class EmptyShoppingCartTest extends Common {
     private WebDriver driver;
     private EmptyShoppingCartPage emptyShoppingCartPage;
     private LoginPage loginPage;
+    private DashboardPage dashboardPage;
     private static final String EMAIL = "liberta@gmail.com";
     private static final String PASSWORD = "User123";
 
-    @BeforeMethod
-    public void setUpTest() {
-        setUp();
-        emptyShoppingCartPage = new EmptyShoppingCartPage(driver);
+    
+        @BeforeMethod
+        public void setUpTest() {
+            setUp();
+            emptyShoppingCartPage = new EmptyShoppingCartPage(driver);
     }
 
-    @Test(dependsOnMethods = "com.lhind.selenium.tests.DashboardTest.testDashboard")
+    @Test
     public void testEmptyShoppingCart() {
 
         // Log in precondition
@@ -35,6 +40,15 @@ public class EmptyShoppingCartTest extends Common {
             Assert.fail("Login failed: " + e.getMessage());
         }
 
+        // Precondition: Complete Dashboard steps
+        try {
+            dashboardPage.hoverAndClickNotebooks();
+            dashboardPage.addToCart();
+            }
+        catch (Exception e) {
+            Assert.fail("Dashboard preconditions failed: " + e.getMessage());
+        }
+        
         EmptyShoppingCartPage shoppingCartPage = new EmptyShoppingCartPage(driver);
 
         // Step 1: Verify the initial number of items in the cart
