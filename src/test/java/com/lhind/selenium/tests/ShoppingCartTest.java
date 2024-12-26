@@ -3,7 +3,6 @@ package com.lhind.selenium.tests;
 import com.lhind.selenium.pages.Common;
 import com.lhind.selenium.pages.LoginPage;
 import com.lhind.selenium.pages.ShoppingCartPage;
-
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -25,7 +24,7 @@ public class ShoppingCartTest extends Common {
         shoppingCartPage = new ShoppingCartPage(driver);
     }
 
-    @Test
+    @Test(dependsOnMethods = "com.lhind.selenium.tests.DashboardTest.testDashboard")
     public void testShoppingCart() {
         // Log in precondition
         try {

@@ -62,7 +62,7 @@ public class TestConfig {
     public static final By goToCartButton = By.xpath("//button[@class='button-1 cart-button']");
     public static final By shoppingCartTitle = By.xpath("//div[@class='page-title' and contains(text(),'Shopping cart')]");
     public static final By updateCartButton = By.xpath("//button[@id='updatecart']");
-    public static final By continueShoppingButton = By.className("button-2 continue-shopping-button");
+    public static final By continueShoppingButton = By.xpath("//button[@class=\"button-2 continue-shopping-button\"]");
     public static final By estimateShippingButton = By.xpath("//a[@id='open-estimate-shipping-popup' and @class='estimate-shipping-button']");
     public static final By priceForProduct1 = By.xpath("(//span[@class='product-subtotal'])[1]");
     public static final By priceForProduct2 = By.xpath("(//span[@class='product-subtotal'])[2]");

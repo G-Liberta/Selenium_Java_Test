@@ -3,13 +3,13 @@ package com.lhind.selenium.tests;
 import com.lhind.selenium.pages.Common;
 import com.lhind.selenium.pages.EmptyShoppingCartPage;
 import com.lhind.selenium.pages.LoginPage;
-
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class EmptyShoppingCartTest extends Common {
+
     private WebDriver driver;
     private EmptyShoppingCartPage emptyShoppingCartPage;
     private LoginPage loginPage;
@@ -22,8 +22,19 @@ public class EmptyShoppingCartTest extends Common {
         emptyShoppingCartPage = new EmptyShoppingCartPage(driver);
     }
 
-    @Test
+    @Test(dependsOnMethods = "com.lhind.selenium.tests.DashboardTest.testDashboard")
     public void testEmptyShoppingCart() {
+
+        // Log in precondition
+        try {
+            loginPage.clickLoginLink();
+            loginPage.enterEmail(EMAIL);
+            loginPage.enterPassword(PASSWORD);
+            loginPage.clickLoginButton();
+        } catch (Exception e) {
+            Assert.fail("Login failed: " + e.getMessage());
+        }
+
         EmptyShoppingCartPage shoppingCartPage = new EmptyShoppingCartPage(driver);
 
         // Step 1: Verify the initial number of items in the cart
